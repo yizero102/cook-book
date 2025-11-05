@@ -1,0 +1,1 @@
+Error: 'ThinkingBlock' object has no attribute 'text'

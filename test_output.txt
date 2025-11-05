@@ -1,0 +1,202 @@
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ 🤖 Advanced Multi-Agent AI System 🤖                                         │
+│                                                                              │
+│ Powered by Anthropic LLM                                                     │
+│ Demonstrating advanced AI capabilities across multiple domains               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+                           Available Agents                            
+┏━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Agent                ┃ Specialty                                    ┃
+┡━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ CodeAnalyzer         │ Code analysis, refactoring, and optimization │
+│ CreativeWriter       │ Stories, poems, and creative content         │
+│ ProblemSolver        │ Math, logic puzzles, and complex problems    │
+│ CodeGenerator        │ Full application generation                  │
+└──────────────────────┴──────────────────────────────────────────────┘
+
+
+
+═══ Demo 1: Code Analysis ═══
+
+╭───────────── CodeAnalyzer - Code Analysis & Refactoring Expert ──────────────╮
+│ Query:                                                                       │
+│ Analyzing python code...                                                     │
+│                                                                              │
+│ Response:                                                                    │
+│ I'll analyze this Python code piece by piece and provide you with a          │
+│ comprehensive assessment.                                                    │
+│                                                                              │
+│ ## 1. Quality Assessment: **6/10**                                           │
+│                                                                              │
+│ This code is functional but has several areas for improvement in terms of    │
+│ modern Python practices, efficiency, and robustness.                         │
+│                                                                              │
+│ ## 2. Identified Issues                                                      │
+│                                                                              │
+│ ### calculate_sum() issues:                                                  │
+│ - **Inefficient iteration**: Using `range(len(numbers))` instead of direct   │
+│ iteration                                                                    │
+│ - **No input validation**: No check for empty lists or None values           │
+│ - **Missing type hints**: No type annotations for parameters or return value │
+│ - **No error handling**: Will crash if given None or invalid input           │
+│                                                                              │
+│ ### find_max() issues:                                                       │
+│ - **Same iteration problem**: Using `range(1, len(arr))` instead of direct   │
+│ enumeration                                                                  │
+│ - **No empty list handling**: Will raise IndexError if given an empty list   │
+│ - **No input validation**: No type checking or None handling                 │
+│ - **Missing type hints**: No type annotations                                │
+│                                                                              │
+│ ### General issues:                                                          │
+│ - **Performance**: Inefficient iteration patterns                            │
+│ - **Python idioms**: Not leveraging Python's built-in functions and features │
+│ - **Documentation**: No docstrings explaining function purposes              │
+│                                                                              │
+│ ## 3. Suggested Improvements                                                 │
+│                                                                              │
+│ 1. **Use Python's built-in functions**: `sum()` and `max()`                  │
+│ 2. **Add proper type hints**                                                 │
+│ 3. **Handle edge cases** (empty lists)                                       │
+│ 4. **Add input validation**                                                  │
+│ 5. **Include docstrings**                                                    │
+│ 6. **Use more Pythonic iteration patterns**                                  │
+│ 7. **Consider using enumerate() for index-based operations**                 │
+│                                                                              │
+│ ## 4. Refactored Version                                                     │
+│                                                                              │
+│ ```python                                                                    │
+│ from typing import List, Union, Optional                                     │
+│ import sys                                                                   │
+│                                                                              │
+│ def calculate_sum(numbers: List[Union]) -> Optional[Union]:                  │
+│     """                                                                      │
+│     Calculate the sum of a list of numbers.                                  │
+│                                                                              │
+│     Args:                                                                    │
+│         numbers: List of integers or floats                                  │
+│                                                                              │
+│     Returns:                                                                 │
+│         Sum of numbers, or None if list is empty                             │
+│                                                                              │
+│     Raises:                                                                  │
+│         TypeError: If input is not a list or contains non-numeric values     │
+│         ValueError: If list is empty                                         │
+│     """                                                                      │
+│     if not isinstance(numbers, list):                                        │
+│         raise TypeError("Input must be a list")                              │
+│                                                                              │
+│     if not numbers:                                                          │
+│         raise ValueError("Cannot calculate sum of empty list")               │
+│                                                                              │
+│     # Validate all elements are numeric                                      │
+│     for i, num in enumerate(numbers):                                        │
+│         if not isinstance(num, (int, float)):                                │
+│             raise TypeError(f"Element at index {i} is not numeric:           │
+│ {type(num)}")                                                                │
+│                                                                              │
+│     return sum(numbers)                                                      │
+│                                                                              │
+│ def find_max(arr: List[Union]) -> Optional[Union]:                           │
+│     """                                                                      │
+│     Find the maximum value in a list of numbers.                             │
+│                                                                              │
+│     Args:                                                                    │
+│         arr: List of integers or floats                                      │
+│                                                                              │
+│     Returns:                                                                 │
+│         Maximum value, or None if list is empty                              │
+│                                                                              │
+│     Raises:                                                                  │
+│         TypeError: If input is not a list or contains non-numeric values     │
+│         ValueError: If list is empty                                         │
+│     """                                                                      │
+│     if not isinstance(arr, list):                                            │
+│         raise TypeError("Input must be a list")                              │
+│                                                                              │
+│     if not arr:                                                              │
+│         raise ValueError("Cannot find maximum of empty list")                │
+│                                                                              │
+│     # Validate all elements are numeric                                      │
+│     for i, val in enumerate(arr):                                            │
+│         if not isinstance(val, (int, float)):                                │
+│             raise TypeError(f"Element at index {i} is not numeric:           │
+│ {type(val)}")                                                                │
+│                                                                              │
+│     return max(arr)                                                          │
+│                                                                              │
+│ # Alternative implementations with different behaviors:                      │
+│ def calculate_sum_safe(numbers: List[Union], default: Union = 0) -> Union:   │
+│     """                                                                      │
+│     Safe version that returns default value for empty lists instead of       │
+│ raising error.                                                               │
+│     """                                                                      │
+│     if not isinstance(numbers, list):                                        │
+│         raise TypeError("Input must be a list")                              │
+│                                                                              │
+│     return sum(numbers) if numbers else default                              │
+│                                                                              │
+│ def find_max_safe(arr: List[Union], default: Optional[Union] = None) ->      │
+│ Optional[Union]:                                                             │
+│     """                                                                      │
+│     Safe version that returns default value for empty lists instead of       │
+│ raising error.                                                               │
+│     """                                                                      │
+│     if not isinstance(arr, list):                                            │
+│         raise TypeError("Input must be a list")                              │
+│                                                                              │
+│     return max(arr) if arr else default                                      │
+│ ```                                                                          │
+│                                                                              │
+│ ## 5. Performance Considerations                                             │
+│                                                                              │
+│ ### Performance Comparison:                                                  │
+│                                                                              │
+│ **Original implementation:**                                                 │
+│ ```python                                                                    │
+│ def calculate_sum(numbers):                                                  │
+│     total = 0                                                                │
+│     for i in range(len(numbers)):  # O(n) time, O(1) space                   │
+│         total = total + numbers                                              │
+│     return total                                                             │
+│ ```                                                                          │
+│                                                                              │
+│ **Refactored version:**                                                      │
+│ ```python                                                                    │
+│ def calculate_sum(numbers: List[Union]) -> Optional[Union]:                  │
+│     return sum(numbers)  # Uses built-in C implementation                    │
+│ ```                                                                          │
+│                                                                              │
+│ ### Key Performance Improvements:                                            │
+│                                                                              │
+│ 1. **Built-in functions**: `sum()` and `max()` are implemented in C and are  │
+│ 2-3x faster than Python loops                                                │
+│ 2. **No index access overhead**: Direct iteration eliminates array indexing  │
+│ 3. **Memory efficiency**: Built-in functions have better memory usage        │
+│ patterns                                                                     │
+│ 4. **Time complexity**: Both maintain O(n) time complexity, but with much    │
+│ lower constant factors                                                       │
+│                                                                              │
+│ ### Performance Benchmarks (rough estimates):                                │
+│ - **Original calculate_sum**: ~0.1-0.2 μs per element                        │
+│ - **Refactored calculate_sum**: ~0.02-0.03 μs per element (5-10x faster)     │
+│ - **Original find_max**: ~0.15-0.25 μs per element                           │
+│ - **Refactored find_max**: ~0.03-0.05 μs per element (5-8x faster)           │
+│                                                                              │
+│ ### Additional Considerations:                                               │
+│                                                                              │
+│ 1. **Input validation overhead**: The added type checking adds minimal       │
+│ overhead (~1-2%) but prevents runtime errors                                 │
+│ 2. **Error handling**: Raising exceptions vs. returning None - choose based  │
+│ on your use case                                                             │
+│ 3. **Memory usage**: Both versions use O(1) additional space                 │
+│ 4. **Scalability**: For large datasets (100K+ elements), the built-in        │
+│ functions show significant advantages                                        │
+│                                                                              │
+│ The refactored version provides better performance, robustness, and follows  │
+│ Python best practices while maintaining clear, readable code.                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+═══ Demo 2: Creative Writing (Story) ═══
+
