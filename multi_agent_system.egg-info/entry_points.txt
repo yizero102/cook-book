@@ -1,0 +1,2 @@
+[console_scripts]
+run_multi_agent_system = multi_agent_system.main:main

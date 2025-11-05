@@ -1,0 +1,15 @@
+README.md
+setup.py
+multi_agent_system/__init__.py
+multi_agent_system/main.py
+multi_agent_system.egg-info/PKG-INFO
+multi_agent_system.egg-info/SOURCES.txt
+multi_agent_system.egg-info/dependency_links.txt
+multi_agent_system.egg-info/entry_points.txt
+multi_agent_system.egg-info/top_level.txt
+multi_agent_system/agents/__init__.py
+multi_agent_system/agents/base_agent.py
+multi_agent_system/agents/manager_agent.py
+multi_agent_system/agents/worker_agent.py
+multi_agent_system/llm/__init__.py
+multi_agent_system/llm/llm_client.py
