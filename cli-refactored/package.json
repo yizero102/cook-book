@@ -1,0 +1,35 @@
+{
+  "name": "@anthropic-ai/claude-code-refactored",
+  "version": "2.0.34",
+  "description": "Refactored version of Claude Code CLI with improved structure and readability",
+  "type": "module",
+  "main": "src/core/entry.js",
+  "exports": {
+    ".": "./src/core/entry.js",
+    "./commands": "./src/commands/mcp-commands.js",
+    "./utils": "./src/utils/index.js",
+    "./config": "./src/config/settings.js",
+    "./core": "./src/core/main.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "eslint src/",
+    "format": "prettier --write src/"
+  },
+  "author": "Anthropic <support@anthropic.com>",
+  "license": "SEE LICENSE IN README.md",
+  "homepage": "https://github.com/anthropics/claude-code",
+  "bugs": {
+    "url": "https://github.com/anthropics/claude-code/issues"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  }
+}
