@@ -1,0 +1,25 @@
+{
+  "name": "@anthropic-ai/claude-code-src",
+  "version": "2.0.34",
+  "description": "Refactored source code for Claude Code CLI",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "claude",
+    "cli",
+    "mcp",
+    "ai"
+  ],
+  "author": "Anthropic <support@anthropic.com>",
+  "license": "SEE LICENSE IN README.md",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
